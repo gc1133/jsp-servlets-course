@@ -10,10 +10,19 @@
 
 <% 
 /* User user = (User) session.getAttribute("user"); */
-User user = (User) request.getAttribute("user");
+/* User user = (User) request.getAttribute("user"); */
 %>
 
-<h1>Login Successful! Hello: <%= user.getUserName() %> </h1>
+<jsp:useBean id="user" scope="request" class="com.javaminds.dto.User">
+</jsp:useBean>
+
+<jsp:setProperty property="userName" name="user" value="DefaultUserName"/>
+
+<h1>Login Successful! </h1>
+<br>
+<%-- Hello: <%= user.getUserName() %> --%>
+
+Hello from JSTL tag: <jsp:getProperty property="userName" name="user"/>
 
 </body>
 </html>
